@@ -23,7 +23,7 @@ Classes:
 
 from dataclasses import dataclass, field
 from typing import List, Union, Iterable
-from chat_manager import APIResponse, ChatUserMessage, ClientAction
+from chat_manager import APIResponse, ChatUserMessage, ClientAction, ChatDeveloperMessage
 
 
 @dataclass
@@ -52,7 +52,7 @@ class ChatHistory:
             AttributeError: If the provided object does not have a 'get_api_message()'
                 method.
         """
-        if isinstance(message, (ChatUserMessage, APIResponse)):
+        if isinstance(message, (ChatUserMessage,ChatDeveloperMessage, APIResponse)):
             # Single message case.
             self.history.append(message.get_api_message())
         elif isinstance(message, ClientAction):
@@ -70,3 +70,7 @@ class ChatHistory:
             List[dict]: A list of messages formatted as API-compatible dictionaries.
         """
         return self.history
+    
+    def clear_messages(self):
+        print("deleting history")
+        self.history = []

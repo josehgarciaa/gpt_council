@@ -55,7 +55,7 @@ __hide__*
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
-_pycache_
+*pycache*
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 

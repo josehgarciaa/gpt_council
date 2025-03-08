@@ -20,7 +20,7 @@ if __name__ == "__main__":
     model_config = ConfigAdapter.adapt(model_config_template, model)
     print(model_config.get_params())
     
-    
+    model.set_developer_instruction("you can only answer with words with a. Otherwise you'll answer aha")
 #    original_project_directory = "."
 #    ai_project_directory = "../external/projects/ai_generated/base"
 #    documents_directory="./patterns.md"
@@ -30,6 +30,8 @@ if __name__ == "__main__":
  #   print(ai_project_directory)
     model.set_tools([read_project,safe_write_file, safe_read_file])
     manager = ChatManager(authenticator = manager)
+
+    manager.send_developer(model.developer)
 
  #   message = "Could you read my project in the current directory and give me an honest opinion on the patterns and design  using mark down and defining a clear set of improvement in order to pass to my facotring team. You can write this on "+documents_directory
     message = "Dog is a human as Cat is to ?"
@@ -41,3 +43,13 @@ if __name__ == "__main__":
     else:
         print("Problems processing data")   
         
+
+    manager.clear_history()
+    message = "Dog is a human as Cat is to ?"
+
+    if manager.send_message(message):
+        chatbot = [model_config, model]
+        response = manager.get_response(chatbot) 
+        print(response)
+    else:
+        print("Problems processing data")   

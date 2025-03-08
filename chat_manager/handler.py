@@ -28,7 +28,7 @@ Usage:
 """
 
 from authentication import AuthenticationService
-from chat_manager import ChatUserMessage, APIResponse, ChatHistory, ClientAction
+from chat_manager import ChatUserMessage, ChatDeveloperMessage, APIResponse, ChatHistory, ClientAction
 
 class ChatManager:
     """
@@ -51,6 +51,30 @@ class ChatManager:
         # self.monitor = monitor  # Monitoring service can be added if needed.
         self.chat_history = ChatHistory()  # Structured message storage.
         self.developer_message = ""
+
+
+    def send_developer(self, user_text: str) -> bool:
+        """
+        Processes the user's message, stores it internally, and returns a status.
+
+        The method preprocesses the raw user text into an API-compatible message
+        using ChatUserMessage and appends it to the chat history.
+
+        Args:
+            user_text (str): The text input from the user.
+
+        Returns:
+            bool: True if the message was processed and stored successfully;
+                  False otherwise.
+        """
+        try:
+            developer_message = ChatDeveloperMessage().handle(user_text)
+            self.chat_history.append_message(developer_message)
+            return True
+        except Exception:
+            raise"The user message could not be processed"
+
+
 
     def send_message(self, user_text: str) -> bool:
         """
@@ -131,5 +155,4 @@ class ChatManager:
         Note:
             The method to clear chat_history messages is currently commented out.
         """
-        # self.chat_history.clear_messages()
-        self.developer_message = ""
+        self.chat_history.clear_messages()

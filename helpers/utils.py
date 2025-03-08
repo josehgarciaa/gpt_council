@@ -161,3 +161,36 @@ def write_project(project_dict: Dict[str, Any], dest_dir: Union[str, Path]) -> N
             continue
         if isinstance(value, dict):
             write_project(value, sub_dir)
+            
+def format_project_structure(project_content: dict) -> str:
+    """
+    Formats a given project dictionary into a readable string representation.
+
+    Args:
+        project_content (dict): A dictionary representing the project structure.
+            Expected format:
+            {
+                "module_name": {
+                    "files": {
+                        "filename": "file_content"
+                    }
+                }
+            }
+
+    Returns:
+        str: A formatted string representing the project structure.
+    """
+    project_map = ""
+    
+    for module_name, module_data in project_content.items():
+        project_map += f"Module Name: {module_name}\n"
+        
+        if "files" in module_data:
+            for file_name, file_content in module_data["files"].items():
+                project_map += f"File Name: {file_name}\n"
+                project_map += file_content
+                project_map += "\n"
+                
+    return project_map
+
+
