@@ -1,4 +1,4 @@
-name: gpt_council_env_2
+name: gpt_council_env
 channels:
   - defaults
 dependencies:
