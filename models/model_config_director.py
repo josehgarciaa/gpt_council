@@ -43,9 +43,6 @@ class ConfigDirector:
         # For now, this simply returns a freshly built config as-is.
         return Config().set_max_completion_tokens(16384) \
                        .set_reasoning_effort("high") \
-                       .set_frequency_penalty(0.5) \
-                       .set_top_p(0.1) \
-                       .set_temperature(0.3) \
                        .set_max_completion_tokens(16384) \
                        .build() 
 

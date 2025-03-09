@@ -22,7 +22,9 @@ class ConfigAdapter:
         "gpt-4o-mini": ["reasoning_effort"],
         # For model type "gpt-4o-mini", remove or adjust these keys.
         "gpt-4o": ["reasoning_effort"],
-        "o3-mini": ["frequency_penalty", "top_p", "presence_penalty", "temperature"]
+        "gpt-4.5": ["reasoning_effort"],
+        "o3-mini": ["frequency_penalty", "top_p", "presence_penalty", "temperature"],
+        "o1": ["frequency_penalty", "top_p", "presence_penalty", "temperature"]
     }
 
     @staticmethod

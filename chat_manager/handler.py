@@ -117,7 +117,7 @@ class ChatManager:
         """
         model_config, model = chatbot          
         api_response = APIResponse() 
-        
+        print("sending a message with model", model.model_type)
         # Check if more responses are necessary.
         while api_response.call_api():
             # Determine the actions to take based on the API response.

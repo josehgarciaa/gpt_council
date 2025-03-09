@@ -248,11 +248,4 @@ class Config:
         #    raise ValueError("Parameter 'n' must be >= 1.")
         return self
 
-    def __repr__(self) -> str:
-        """
-        Return a concise string representation of the configuration.
-        """
-        return (
-            f"<ModelConfig model={self.model}, temperature={self.temperature}, "
-            f"messages={len(self.messages)} messages, ...>"
-        )
+ 
