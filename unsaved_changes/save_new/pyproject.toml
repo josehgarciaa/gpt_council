@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt_council"
+version = "1.0.0"
+description = "A package for managing chat interactions, authentication, models, and more."
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "openai", "python-dotenv"
+]
+license = {text = "NonCommercial License: This software may be modified for personal use, but redistribution or commercial use is prohibited without explicit permission."}
+authors = [
+    {name = "Hexananoj", email = "adamecius@gmail.com"}
+]
+maintainers = [
+    {name = "Hexananoj", email = "adamecius@gmail.com"}
+]
+keywords = ["chat", "openai", "authentication", "models", "tools"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
